@@ -8,7 +8,57 @@
 
 </head>
 <body>
-    <div id="map"></div>
+    <header>
+        <h3 class="title">5GEO</h3>
+
+        <div class="toggle">
+            <input type="checkbox" id="toggle" />
+            <label for="toggle"></label>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <div class="filter_panel">
+
+                <h3 class="filter_title">Frecuencia (MHz)</h3>
+                <div class="range_container">
+                    <div class="sliders_control">
+                        <input id="fromSlider" type="range" value="10" min="0" max="100"/>
+                        <input id="toSlider" type="range" value="40" min="0" max="100"/>
+                    </div>
+                    <div class="form_control">
+                        <div class="form_control_container">
+                            <div class="form_control_container__time">Min</div>
+                            <input class="form_control_container__time__input" type="number" id="fromInput" value="10" min="0" max="100"/>
+                        </div>
+                        <div class="form_control_container">
+                            <div class="form_control_container__time">Max</div>
+                            <input class="form_control_container__time__input" type="number" id="toInput" value="40" min="0" max="100"/>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3 class="filter_title">Tipo de señal</h3>
+                <div class="filter_container">
+                    <input type="checkbox" title="4G"/>4G
+                    <input type="checkbox" title="5G"/>5G
+                </div>
+
+            </div>
+
+        </aside>
+    
+        <div id="map"></div>
+    </main>
+
+    
+
+    <footer>
+
+    </footer>
 </body>
 </html>
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
