@@ -1,6 +1,25 @@
 body{
-	background-color: rgb(27, 37, 37);
+	background-color:#f7f7f7
 }
+
+body.dark-theme{
+  background-color: rgb(27, 37, 37);
+}
+
+
+.title{
+	color:#006dc9;
+	text-align: center;
+	font-size: x-large;
+	font-family: 'Georgia';
+	font: bold;
+}
+
+
+body.dark-theme .title{
+  color: darkcyan;
+}
+
 
 #map{
 	height: 100vh;
@@ -21,6 +40,8 @@ body{
     }
 }
 
+
+
 header{
 	align-content: center;
 }
@@ -29,25 +50,26 @@ aside{
 	display: block;
 	float: right;
 	width: 25%;
-	padding: 4dp;
 }
+
 
 .filter_panel{
 	padding: 40px;
 }
 
-.title{
-	color: darkcyan;
-	text-align: center;
-	font-size: x-large;
-	font-family: 'Georgia';
-	font: bold;
+body.dark-theme .filter_panel{
+  color: #C6C6C6;
 }
+
+
 
 .filter_title{
-	color: #C6C6C6;
+	color:#303030;
 }
 
+body.dark-theme .filter_title{
+  color: #C6C6C6;
+}
 
 
 .range_container {
@@ -67,8 +89,13 @@ aside{
 	display: flex;
 	justify-content: space-between;
 	font-size: 24px;
-	color: #635a5a;
   }
+
+  body.dark-theme .form_control {
+    color: #C6C6C6;
+  }
+
+
   
   input[type=range]::-webkit-slider-thumb {
 	-webkit-appearance: none;
@@ -102,17 +129,20 @@ aside{
   }
   
   input[type="number"] {
-	color: #8a8383;
 	width: 50px;
 	height: 30px;
 	font-size: 20px;
 	border: none;
   }
+
+  body.dark-theme input[type="number"]{
+    color: #8a8383;
+  }
   
-  /*input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button {  
-	 opacity: 1;
-  }*/
+	 opacity: 0;
+  }
   
   input[type="range"] {
 	-webkit-appearance: none; 
@@ -128,8 +158,6 @@ aside{
 	height: 0;
 	z-index: 1;
   }
-
-
 
 
   .toggle input[type='checkbox'] {
@@ -172,6 +200,26 @@ aside{
     transform: translateX(15px);
 }
 
-.toggle input[type='checkbox'] title{
-	color: #C6C6C6;
+.btn {
+    width: 6em;
+    height: 2em;
+    font-size: 1.5em;
+    border: none;
+    background-color: #2962ff;
+    color: white;
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    border-radius: 0.2em;
+    outline: none;
+    transition: all 100ms ease-in;
+    position: relative;
+    align-self: end;
+}
+
+/*var(--clr-primary-hover)*/
+
+.btn:active,
+.btn:hover {
+	background-color:#0054b0;
 }
