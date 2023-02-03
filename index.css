@@ -10,7 +10,7 @@ body.dark-theme{
 .title{
 	color:#006dc9;
 	text-align: center;
-	font-size: x-large;
+	font-size: xx-large;
 	font-family: 'Georgia';
 	font: bold;
 }
@@ -44,6 +44,8 @@ body.dark-theme .title{
 
 header{
 	align-content: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 aside{
@@ -72,6 +74,9 @@ body.dark-theme .filter_title{
 }
 
 
+
+/*Dual slider range*/
+
 .range_container {
 	display: flex;
 	flex-direction: column;
@@ -84,6 +89,7 @@ body.dark-theme .filter_title{
 	min-height: 50px;
   }
   
+
   .form_control {
 	position: relative;
 	display: flex;
@@ -94,7 +100,6 @@ body.dark-theme .filter_title{
   body.dark-theme .form_control {
     color: #C6C6C6;
   }
-
 
   
   input[type=range]::-webkit-slider-thumb {
@@ -160,6 +165,13 @@ body.dark-theme .filter_title{
   }
 
 
+  /*Light-Dark theme swap*/
+
+  .toggle{
+    margin-right: 2vw;
+    align-self: center ;
+  }
+
   .toggle input[type='checkbox'] {
     display: none;
 }
@@ -167,13 +179,13 @@ body.dark-theme .filter_title{
 .toggle label {
     background-color: #777;
     border: 2px solid #555;
-    border-radius: 15px;
+    border-radius: 20px;
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: all ease-in-out 0.3s;
-    width: 30px;
-    height: 15px;
+    width: 40px;
+    height: 20px;
 }
 
 .toggle label::after {
@@ -186,8 +198,8 @@ body.dark-theme .filter_title{
     left: 2px;
     top: 2px;
     transition: all ease-in-out 0.3s;
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
 }
 
 .toggle input[type='checkbox']:checked ~ label {
@@ -197,7 +209,7 @@ body.dark-theme .filter_title{
 
 .toggle input[type='checkbox']:checked ~ label::after {
     background-color: #0054b0;
-    transform: translateX(15px);
+    transform: translateX(20px);
 }
 
 .btn {
