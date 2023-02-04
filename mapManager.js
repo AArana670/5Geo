@@ -33,5 +33,28 @@ map.addLayer(heatmap);
 
 
 function applyFilter(){
-  console.warn("Empty method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning")
+    console.warn("Incomplete method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning")
+
+    var minFreq = document.getElementById("fromInput").value;
+    var maxFreq = document.getElementById("toInput").value;
+
+    var g4 = document.getElementById("check4G").checked;
+    var g5 = document.getElementById("check5G").checked;
+
+    var msg;
+    if (g4 || g5){
+        msg = "freq >= " + minFreq;
+        msg += " & freq <= " + maxFreq;
+        if (g4 && g5){
+            msg += " & (type == '4G' | type == '5G')";
+        }else if(g4){
+            msg += " & type == '4G'";
+        }else if(g5){
+            msg += " & type == '5G'";
+        }
+    }else{
+        msg = "type == ''";
+    }
+
+    console.log(msg);
 }
