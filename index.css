@@ -31,11 +31,11 @@ body.dark-theme .title{
 }
 
 @media (prefers-color-scheme: dark) {
-    .leaflet-tile {
+    body.dark-theme .leaflet-tile {
         filter: var(--leaflet-tile-filter, none);
     }
 
-    .leaflet-container {
+    body.dark-theme .leaflet-container {
         background: #303030;
     }
 }
