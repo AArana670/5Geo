@@ -81,12 +81,13 @@ body.dark-theme .filter_title{
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	margin: 35% auto;
+	margin: 5% auto;
+  margin-top: 15%;
   }
   
   .sliders_control {
 	position: relative;
-	min-height: 50px;
+	min-height: 30px;
   }
   
 
@@ -135,7 +136,7 @@ body.dark-theme .filter_title{
   
   input[type="number"] {
 	width: 50px;
-	height: 30px;
+	height: 25px;
 	font-size: 20px;
 	border: none;
   }
@@ -144,10 +145,17 @@ body.dark-theme .filter_title{
     color: #8a8383;
   }
   
-  input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button {  
-	 opacity: 0;
-  }
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
   
   input[type="range"] {
 	-webkit-appearance: none; 
