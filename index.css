@@ -21,6 +21,12 @@ body.dark-theme .title{
 }
 
 
+#timeEvo{
+  height: 80vh;
+  width: 80%;
+}
+
+
 #map{
 	height: 100vh;
 	width: 75%;
@@ -51,7 +57,15 @@ header{
 aside{
 	display: block;
 	float: right;
-	width: 25%;
+}
+
+.filter_aside{
+  width: 25%;
+}
+
+.download_aside{
+  width: 20%;
+  align-content: center;
 }
 
 
@@ -222,7 +236,7 @@ input[type=number] {
 
 .btn {
     width: 6em;
-    height: 2em;
+    height: max-content;
     font-size: 1.5em;
     border: none;
     background-color: #2962ff;
@@ -235,6 +249,10 @@ input[type=number] {
     transition: all 100ms ease-in;
     position: relative;
     align-self: end;
+}
+
+#BtnFilter {
+  height: 2em;
 }
 
 /*var(--clr-primary-hover)*/
