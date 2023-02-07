@@ -1,21 +1,31 @@
+datasetX=[]
+for (var i=0; i<60; i++) {
+    if (i<10){
+        datasetX.push("10:0"+i);
+    }else{
+        datasetX.push("10:"+i);
+    }
+}
+
+datasetY=[]
+for (var i=0; i<60; i++) {
+    datasetY.push(-Math.random());
+}
+
+
 var trace1 = {
-    x: ["10:00", "10:01", "10:02", "10:03"],
-    y: [10, 15, 13, 17],
+    x: datasetX,
+    y: datasetY,
     type: 'scatter',
-    title: "Señal 1"
-  };
+    name: "Señal 1"
+    };
   
-  var trace2 = {
-    x: ["10:00", "10:01", "10:02", "10:03"],
-    y: [16, 5, 11, 9],
-    type: 'scatter',
-    title: "Señal 2"
-  };
-  
-  var data = [trace1, trace2];
+  var data = [trace1];
 
   var layout = {
-    title: "Evolución temporal de la emisión EM"
+    title: "Evolución temporal de la emisión EM",
+    /*plot_bgcolor:"#303030",
+    paper_bgcolor:"#FFF3"*/
   }
   
   Plotly.newPlot('timeEvo', data, layout);
