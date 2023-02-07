@@ -33,7 +33,7 @@ map.addLayer(heatmap);
 
 
 function applyFilter(){
-    console.warn("Incomplete method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning")
+    console.warn("Incomplete method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning");
 
     var minFreq = document.getElementById("fromInput").value;
     var maxFreq = document.getElementById("toInput").value;
@@ -58,3 +58,17 @@ function applyFilter(){
 
     console.log(msg);
 }
+
+function downloadMap(){
+    console.warn("Incomplete method:", "The method 'downloadMap()' has not been implemented, please fill the function before removing this warning");
+
+
+}
+
+
+map.on('click', function(e){
+    var coord = e.latlng;
+    var lat = coord.lat;
+    var lng = coord.lng;
+    console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+    });

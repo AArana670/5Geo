@@ -20,7 +20,7 @@
     </header>
 
     <main>
-        <aside>
+        <aside class="filter_aside">
             <div class="filter_panel">
 
                 <h3 class="filter_title">Frecuencia (MHz)</h3>
@@ -55,9 +55,27 @@
 
             </div>
 
-        </aside>
+        </aside class="download_aside">
     
         <div id="map"></div>
+
+
+        <aside class="">
+
+            <div id="save_panel">
+
+                <button onclick="downloadMap()" class="btn">Descargar Mapa</button>
+
+                <br>
+                <br>
+
+                <button onclick="downloadGraph()" class="btn">Descargar Gráfico</button>
+
+            </div>
+
+        </aside>
+
+        <div id="timeEvo"></div>
     </main>
 
     
@@ -68,8 +86,13 @@
 </body>
 </html>
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
 <script src="./heatmap.js"></script>
 <script src="./leaflet-heatmap.js"></script>
+
+<script src="https://cdn.plot.ly/plotly-2.18.0.min.js"></script>
+
 <script src="rangeController.js"></script>
 <script src="./mapManager.js"></script>
+<script src="./linePlotManager.js"></script>
 <script src="./darkMode.js"></script>
