@@ -59,6 +59,16 @@ function applyFilter(){
     console.log(msg);
 }
 
+
+map.on('click', function(e){
+    var coord = e.latlng;
+    var lat = coord.lat;
+    var lng = coord.lng;
+
+    createGraph(lat,lng);
+    });
+
+
 function downloadMap(){
     console.warn("Incomplete method:", "The method 'downloadMap()' has not been implemented, please fill the function before removing this warning");
 
@@ -66,9 +76,19 @@ function downloadMap(){
 }
 
 
-map.on('click', function(e){
-    var coord = e.latlng;
-    var lat = coord.lat;
-    var lng = coord.lng;
-    console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
-    });
+function dropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches('.btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}

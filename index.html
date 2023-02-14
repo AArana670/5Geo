@@ -66,17 +66,27 @@
     
         <div id="map"></div>
 
+        <hr>
 
-        <aside class="">
+        <aside id="graph_aside">
 
-            <div id="save_panel">
+            <div class="filter_panel">
 
-                <button onclick="downloadMap()" class="btn">Descargar Mapa</button>
-
+            <h3 class="filter_title">Tiempo de muestra</h3>
+            <div class="filter_container">
+                <input type="datetime-local" id="minTime"/>
                 <br>
-                <br>
+                <input type="datetime-local" id="maxTime"/>
+            </div>
 
-                <button onclick="downloadGraph()" class="btn">Descargar Gráfico</button>
+            <hr>
+
+            <button onclick="dropDown()" class="btn">Descargar</button>
+            
+            <div id="myDropdown" class="dropdown-content">
+                <button onclick="downloadMap()">Datos del mapa</button>
+                <button onclick="downloadGraph()">Datos del gráfico</button>
+            </div>
 
             </div>
 
