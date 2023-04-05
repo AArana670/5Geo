@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import logger
+import dbManager
 
 app = Flask(__name__)
 
@@ -16,6 +17,11 @@ def index():
 def addSignals():
     logger.log(request.form["msg"])
     return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
+
+
+@app.route('/signal', methods=['GET'])
+def showSignals():
+    return dbManager.getSignals()
 
 
 if __name__ == '__main__':
