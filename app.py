@@ -12,18 +12,20 @@ def index():
     return render_template('index.html')
 
 
-#receiving data
+'''#receiving data
 @app.route('/signal', methods=['POST'])
 def addSignals():
     logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
-    return "El mensaje " + request.form["msg"] + " ha sido capturado."
+    return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
 
 
+#obtaining data
 @app.route('/signal', methods=['GET'])
 def showSignals():
     logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
     return dbManager.getSignals()
 
 
+'''#run api (for debugging purposes only)
 if __name__ == '__main__':
-   app.run()
+   app.run()'''
