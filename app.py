@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import logger
+import dbManager
 
 app = Flask(__name__)
 
@@ -11,12 +12,20 @@ def index():
     return render_template('index.html')
 
 
-#receiving data
-'''@app.route('/signal', methods=['POST'])
+'''#posting data
+@app.route('/signal', methods=['POST'])
 def addSignals():
-    logger.log(request.form["msg"])
+    logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
     return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
 
 
+#obtaining data
+@app.route('/signal', methods=['GET'])
+def showSignals():
+    logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
+    return dbManager.getSignals()
+
+
+'''#run api (for debugging purposes only)
 if __name__ == '__main__':
-   app.run()
+   app.run()'''
