@@ -12,7 +12,7 @@ def index():
     return render_template('index.html')
 
 
-'''#receiving data
+'''#posting data
 @app.route('/signal', methods=['POST'])
 def addSignals():
     logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
