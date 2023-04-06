@@ -13,14 +13,15 @@ def index():
 
 
 #receiving data
-'''@app.route('/signal', methods=['POST'])
+@app.route('/signal', methods=['POST'])
 def addSignals():
-    logger.log(request.form["msg"])
-    return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
+    logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
+    return "El mensaje " + request.form["msg"] + " ha sido capturado."
 
 
 @app.route('/signal', methods=['GET'])
 def showSignals():
+    logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
     return dbManager.getSignals()
 
 
