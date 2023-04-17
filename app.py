@@ -19,11 +19,11 @@ def addSignals():
     return "El mensaje " + request.form["msg"] + " ha sido capturado."
 
 
-#obtaining data
+'''#obtaining data
 @app.route('/signal')
 def showSignals():
     logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
-    return dbManager.getSignals()
+    return dbManager.getSignals()'''
 
 
 '''#run api (for debugging purposes only)
