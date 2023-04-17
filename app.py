@@ -12,12 +12,20 @@ def index():
     return render_template('index.html')
 
 
-#posting data
+'''#posting data
 @app.route('/signal', methods=['POST'])
 def addSignals():
     logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
-    return "El mensaje " + request.form["msg"] + " ha sido capturado."
+    return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
 
+@app.route('/signal', methods=['GET', 'POST'])
+def manageSignals():
+    if method=='GET':
+        logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
+        return dbManager.getSignals()
+    else:
+        logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
+        return "El mensaje " + request.form["msg"] + " ha sido capturado."
 
 '''#obtaining data
 @app.route('/signal')
