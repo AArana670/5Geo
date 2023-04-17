@@ -12,26 +12,18 @@ def index():
     return render_template('index.html')
 
 
-'''#posting data
-@app.route('/signal', methods=['POST'])
-def addSignals():
-    logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
-    return "El mensaje " + request.form["msg"] + " ha sido capturado."'''
-
-@app.route('/signal', methods=['GET', 'POST'])
-def manageSignals():
-    if request.method=='GET':
-        logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
-        return dbManager.getSignals()
-    else:
-        logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
-        return "El mensaje " + request.form["msg"] + " ha sido capturado."
-
-'''#obtaining data
+#obtaining data
 @app.route('/signal')
 def showSignals():
     logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
-    return dbManager.getSignals()'''
+    return dbManager.getSignals()
+
+
+#posting data
+@app.route('/signal', methods=['POST'])
+def addSignals():
+    logger.log("New data post from " + request.remote_addr + " | " + request.form["token"] + ": " + request.form["msg"])
+    return "El mensaje " + request.form["msg"] + " ha sido capturado."
 
 
 '''#run api (for debugging purposes only)
