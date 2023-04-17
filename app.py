@@ -20,7 +20,7 @@ def addSignals():
 
 @app.route('/signal', methods=['GET', 'POST'])
 def manageSignals():
-    if method=='GET':
+    if request.method=='GET':
         logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
         return dbManager.getSignals()
     else:
