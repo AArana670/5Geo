@@ -22,7 +22,7 @@ def showSignals():
 #posting data
 @app.route('/signal', methods=['GET', 'POST'])
 def addSignals():
-    logger.log("New data request from " + request.remote_addr''' + " | " + request.form["token"]''' + ": " + request.form["msg"])
+    logger.log("New data request/post from " + request.remote_addr + ": " + request.form["msg"])
     return "El mensaje " + request.form["msg"] + " ha sido capturado."
 
 
