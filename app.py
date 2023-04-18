@@ -22,8 +22,12 @@ def showSignals():
 #posting data
 @app.route('/signal', methods=['GET', 'POST'])
 def addSignals():
-    logger.log("New data request/post from " + request.remote_addr + ": " + request.form["msg"])
-    return "El mensaje " + request.form["msg"] + " ha sido capturado."
+    if request.method == 'GET':
+        logger.log("New data request from " + request.remote_addr + ": " + request.form["msg"])
+        return dbManager.getSignals()
+    else:
+        logger.log("New data post from " + request.remote_addr + ": " + request.get_json())
+        return "El mensaje " + "owo" + " ha sido capturado."
 
 
 '''#run api (for debugging purposes only)
