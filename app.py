@@ -12,13 +12,6 @@ def index():
     return render_template('index.html')
 
 
-'''#obtaining data
-@app.route('/signal')
-def showSignals():
-    logger.log("New data request from " + request.remote_addr + ": " + str(request.args))
-    return dbManager.getSignals()'''
-
-
 #posting data
 @app.route('/signal', methods=['GET', 'POST'])
 def addSignals():
@@ -28,8 +21,3 @@ def addSignals():
     else:
         logger.log("New data request from " + request.remote_addr + ": " + request.form["msg"])
         return dbManager.getSignals()
-
-
-'''#run api (for debugging purposes only)
-if __name__ == '__main__':
-   app.run()'''
