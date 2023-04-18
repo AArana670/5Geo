@@ -60,6 +60,12 @@ aside{
 	float: right;
 }
 
+
+#appInfo{
+  text-align: center;
+}
+
+
 .graph_aside{
   width: 20%;
 }
