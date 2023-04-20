@@ -19,16 +19,16 @@ def insert(body):  #signalList has already been verified
         newSignal["ubiLong"] = signal["ubiLong"]
         newSignal["type"] = signal["type"]
 
-        if "freq" in newSignal:
+        if "freq" in signal:
             newSignal["freq"] = signal["freq"]
         
-        if "cId" in newSignal:
+        if "cId" in signal:
             newSignal["cId"] = signal["cId"]
         
-        if "provider" in newSignal:
+        if "provider" in signal:
             newSignal["provider"] = signal["provider"]
         
-        if "token" in newSignal:
+        if "token" in signal:
             newSignal["user"] = signal["token"]
         
         collection.insert_one(newSignal)
