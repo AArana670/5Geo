@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 import logger
 import dbManager
 import format
@@ -39,4 +39,4 @@ def addSignals():
 
 @app.route('/geiger')
 def downloadApk():
-    return flask.send_file("downloads/5Geiger.apk")
+    return send_file("downloads/5Geiger.apk")
