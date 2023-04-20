@@ -1,3 +1,5 @@
+import json
+
 SUCCESS = 0
 FAILURE = 1
 DUMMY = 2
@@ -31,6 +33,6 @@ def verify(json):
     return SUCCESS
 
 
-def build():
+def build(data):  #data is a dictionary
 
-    return None
+    return json.dumps(data)
