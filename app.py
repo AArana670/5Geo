@@ -35,3 +35,8 @@ def addSignals():
     if request.method == 'GET':
         logger.log("New data request from " + request.remote_addr)
         return format.build(dbManager.getSignals()), 200
+
+
+@app.route('/geiger')
+def downloadApk():
+    return flask.send_file("downloads/5Geiger.apk")
