@@ -5,13 +5,15 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 osm.addTo(map);
 
-var heatmapData = [
-    {lat: 43.263, lng: -2.955, value: 0.5, },
-    {lat: 43.265, lng: -2.95, value: 0.8},
-    {lat: 43.268, lng: -2.95, value: 0.2},
-    {lat: 43.27, lng: -2.947, value: 0.6},
-    {lat: 43.267, lng: -2.953, value: 0.9}
-];
+var heatmapData = fetch("http://157.245.35.106/signal")
+.then((r1) => r1.json());
+/*[
+    {ubiLat: 43.263, ubiLong: -2.955, dBm: 0.5, },
+    {ubiLat: 43.265, ubiLong: -2.95, dBm: 0.8},
+    {ubiLat: 43.268, ubiLong: -2.95, dBm: 0.2},
+    {ubiLat: 43.27, ubiLong: -2.947, dBm: 0.6},
+    {ubiLat: 43.267, ubiLong: -2.953, dBm: 0.9}
+];*/
 
 var heatmap = new HeatmapOverlay({
     radius: 0.001,
@@ -19,13 +21,14 @@ var heatmap = new HeatmapOverlay({
     minOpacity: 0,
     scaleRadius: true,
     useLocalExtrema: true,
-    latField: 'lat',
-    lngField: 'lng',
-    valueField: 'value'
+    latField: 'ubiLat',
+    lngField: 'ubiLong',
+    valueField: 'dBm'
 });
 
 heatmap.setData({
     max: 1,
+    min: 0,
     data: heatmapData
 });
 
