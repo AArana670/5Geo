@@ -21,7 +21,7 @@ def addSignals():
         contentFormat = format.verify(body)
         if contentFormat == format.SUCCESS:
             logger.log("Successful data post from " + request.remote_addr + ": " + str(body))
-            dbManager.insert()
+            dbManager.insert(body)
             return "El mensaje " + "owo" + " ha sido capturado.", 200
         
         elif contentFormat == format.FAILURE:
