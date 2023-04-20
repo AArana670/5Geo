@@ -32,6 +32,6 @@ def addSignals():
             logger.log("Dummy data post from " + request.remote_addr + ": " + str(body))
             return "El mensaje " + "owo" + "ha llegado exitosamente", 202
 
-    else:
+    if request.method == 'GET':
         logger.log("New data request from " + request.remote_addr + ": " + request.form["msg"])
         return dbManager.getSignals(), 200
