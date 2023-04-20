@@ -17,3 +17,7 @@ def log(data, lvl=1):
     print(line)
     logFile.write(line + "\n")
     logFile.close()
+
+
+def error(data):
+    log(data, LEVEL_ERROR)
