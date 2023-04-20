@@ -34,4 +34,4 @@ def addSignals():
 
     else:
         logger.log("New data request from " + request.remote_addr + ": " + request.form["msg"])
-        return dbManager.getSignals()
+        return dbManager.getSignals(), 200
