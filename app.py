@@ -34,4 +34,4 @@ def addSignals():
 
     if request.method == 'GET':
         logger.log("New data request from " + request.remote_addr)
-        return dbManager.getSignals(), 200
+        return format.build(dbManager.getSignals()), 200
