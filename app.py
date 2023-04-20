@@ -33,5 +33,5 @@ def addSignals():
             return "El mensaje " + "owo" + "ha llegado exitosamente", 202
 
     if request.method == 'GET':
-        logger.log("New data request from " + request.remote_addr + ": " + request.form["msg"])
+        logger.log("New data request from " + request.remote_addr)
         return dbManager.getSignals(), 200
