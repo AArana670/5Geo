@@ -1,10 +1,11 @@
 from pymongo import MongoClient
+import format
 
 client = MongoClient("localhost", 27017) 
 db = client['5geo']
 collection = db.signals
 
-def getSignals():
+def getSignals(filters):  #filters has already been verified
     res = list(collection.find({}, {'_id': 0}))  #exclude id from find
     return str(res)
 

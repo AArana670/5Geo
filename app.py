@@ -18,7 +18,8 @@ def index():
 def addSignals():
     if request.method == 'POST':
         body = request.get_json()
-        contentFormat = format.verify(body)
+        contentFormat = format.verifyJson(body)
+
         if contentFormat == format.SUCCESS:
             logger.log("Successful data post from " + request.remote_addr + ": " + str(body))
             dbManager.insert(body)
@@ -32,9 +33,17 @@ def addSignals():
             logger.log("Dummy data post from " + request.remote_addr + ": " + str(body))
             return "El mensaje " + "owo" + "ha llegado exitosamente", 202
 
+
     if request.method == 'GET':
-        logger.log("New data request from " + request.remote_addr)
-        return format.build(dbManager.getSignals()), 200
+        params = request.args
+        contentFormat = format.verifyFilter(params)
+
+        if (contentFormat == format.SUCCESS):
+            logger.log("Correct data request from " + request.remote_addr)
+            return format.buildJson(dbManager.getSignals(params)), 200
+        else:  #contentFormat == format.FAILURE
+            logger.error("Failed data request from " + request.remote_addr)
+            return "Petición mal planteada", 400
 
 
 @app.route('/geiger')
