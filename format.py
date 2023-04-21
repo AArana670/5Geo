@@ -34,8 +34,10 @@ def verifyJson(json):
 
 
 def buildJson(data):  #data is a dictionary
+    body = {}
+    body["signals"] = data
 
-    return json.dumps(data)
+    return json.dumps(body)
 
 
 def verifyFilter(data):
