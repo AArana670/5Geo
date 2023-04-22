@@ -17,6 +17,7 @@ fetch("http://157.245.35.106/signal")
 ];*/
 
 function displayMap(heatmapData){
+    console.log(heatmapData)
     var heatmap = new HeatmapOverlay({
         radius: 0.001,
         maxOpacity: .8,
