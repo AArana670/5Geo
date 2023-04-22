@@ -7,7 +7,7 @@ collection = db.signals
 
 def getSignals(filters):  #filters has already been verified
     res = list(collection.find({}, {'_id': 0}))  #exclude id from find
-    return str(res)
+    return res
 
 
 def insert(body):  #signalList has already been verified
