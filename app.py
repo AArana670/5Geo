@@ -48,4 +48,5 @@ def addSignals():
 
 @app.route('/geiger')
 def downloadApk():
+    logger.log("New 5Geiger download from " + request.remote_addr)
     return send_file("downloads/5Geiger.apk")
