@@ -5,8 +5,9 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 osm.addTo(map);
 
-var heatmapData = fetch("http://157.245.35.106/signal")
-.then((r1) => r1.json());
+var heatmapData;
+fetch("http://157.245.35.106/signal").then((response) => console.log(response.json()));
+
 /*[
     {ubiLat: 43.263, ubiLong: -2.955, dBm: 0.5, },
     {ubiLat: 43.265, ubiLong: -2.95, dBm: 0.8},
