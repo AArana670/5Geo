@@ -5,8 +5,8 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 osm.addTo(map);
 
-var heatmapData;
-fetch("http://157.245.35.106/signal").then((response) => console.log(response.json()));
+fetch("http://157.245.35.106/signal")
+    .then((response) => response.json()).then(data => displayMap(data));
 
 /*[
     {ubiLat: 43.263, ubiLong: -2.955, dBm: 0.5, },
@@ -16,24 +16,26 @@ fetch("http://157.245.35.106/signal").then((response) => console.log(response.js
     {ubiLat: 43.267, ubiLong: -2.953, dBm: 0.9}
 ];*/
 
-var heatmap = new HeatmapOverlay({
-    radius: 0.001,
-    maxOpacity: .8,
-    minOpacity: 0,
-    scaleRadius: true,
-    useLocalExtrema: true,
-    latField: 'ubiLat',
-    lngField: 'ubiLong',
-    valueField: 'dBm'
-});
-
-heatmap.setData({
-    max: 1,
-    min: 0,
-    data: heatmapData
-});
-
-map.addLayer(heatmap);
+function displayMap(heatmapData){
+    var heatmap = new HeatmapOverlay({
+        radius: 0.001,
+        maxOpacity: .8,
+        minOpacity: 0,
+        scaleRadius: true,
+        useLocalExtrema: true,
+        latField: 'ubiLat',
+        lngField: 'ubiLong',
+        valueField: 'dBm'
+    });
+    
+    heatmap.setData({
+        max: 1,
+        min: 0,
+        data: heatmapData
+    });
+    
+    map.addLayer(heatmap);
+}
 
 
 function applyFilter(){
