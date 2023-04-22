@@ -6,7 +6,7 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 osm.addTo(map);
 
 fetch("http://157.245.35.106/signal")
-    .then((response) => response.json()).then(data => displayMap(data));
+    .then((response) => response.json()).then(data => displayMap(data["signals"]));
 
 /*[
     {ubiLat: 43.263, ubiLong: -2.955, dBm: 0.5, },
