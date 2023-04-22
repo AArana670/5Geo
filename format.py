@@ -4,7 +4,7 @@ SUCCESS = 0
 FAILURE = 1
 DUMMY = 2
 
-def verify(json):
+def verifyJson(json):
     if "token" not in json:
         return FAILURE
     
@@ -33,6 +33,18 @@ def verify(json):
     return SUCCESS
 
 
-def build(data):  #data is a dictionary
+def buildJson(data):  #data is a dictionary
+    body = {}
+    body["signals"] = data
 
-    return json.dumps(data)
+    return json.dumps(body)
+
+
+def verifyFilter(data):
+
+    return SUCCESS
+
+def buildFilter(data):  #data is a dictionary
+                        #builds a dictionary to filter the mongoDB query
+
+    return {}
