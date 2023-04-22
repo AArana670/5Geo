@@ -24,8 +24,8 @@ function displayMap(heatmapData){
     });
     
     heatmap.setData({
-        max: 1,
-        min: 0,
+        max: -44,
+        min: -140,
         data: heatmapData
     });
     
