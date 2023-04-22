@@ -6,20 +6,9 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 osm.addTo(map);
 
 fetch("http://157.245.35.106/signal")
-    .then((response) => response.json()).then(data => {  //https://stackoverflow.com/a/37741697
+    .then((response) => response.json()).then(data => {
         let mapData = data["signals"];
-        /*var mapData = Object.keys(jsObject).map(function(k) {  //String > JS Object > array of values
-            return object[k];
-        });*/
         displayMap(mapData)});
-
-/*displayMap([
-    {ubiLat: 43.263, ubiLong: -2.955, dBm: 0.5, },
-    {ubiLat: 43.265, ubiLong: -2.95, dBm: 0.8},
-    {ubiLat: 43.268, ubiLong: -2.95, dBm: 0.2},
-    {ubiLat: 43.27, ubiLong: -2.947, dBm: 0.6},
-    {ubiLat: 43.267, ubiLong: -2.953, dBm: 0.9}
-]);*/
 
 function displayMap(heatmapData){
     console.log(heatmapData)
