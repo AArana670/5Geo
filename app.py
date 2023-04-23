@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, Response
 import logger
 import dbManager
 import format
@@ -23,15 +23,15 @@ def addSignals():
         if contentFormat == format.SUCCESS:
             logger.log("Successful data post from " + request.remote_addr + ": " + str(body))
             dbManager.insert(body)
-            return "El mensaje " + "owo" + " ha sido capturado.", 200
+            return Response(status=200)
         
         elif contentFormat == format.FAILURE:
             logger.error("Failed data post from " + request.remote_addr + ": " + str(body))
-            return "El mensaje " + "owo" + " no cumple con el formato de subida", 406
+            return Response(status=406)
         
         else:  #contentFormat == format.DUMMY
             logger.log("Dummy data post from " + request.remote_addr + ": " + str(body))
-            return "El mensaje " + "owo" + "ha llegado exitosamente", 202
+            return Response(status=202)
 
 
     if request.method == 'GET':
@@ -40,10 +40,10 @@ def addSignals():
 
         if (contentFormat == format.SUCCESS):
             logger.log("Correct data request from " + request.remote_addr)
-            return format.buildJson(dbManager.getSignals(params)), 200
+            return Response(status=200)
         else:  #contentFormat == format.FAILURE
             logger.error("Failed data request from " + request.remote_addr)
-            return "Petición mal planteada", 400
+            return Response(status=400)
 
 
 @app.route('/geiger')
