@@ -27,7 +27,7 @@ def verifyJson(json):
         if "type" not in signal:
             return FAILURE
 
-    if json["token"] == "dummy":  #For intentionally fake data, so that the connection can be tested
+    if json["token"] == "dummy":  #For intentionally fake data, so that the connectivity can be tested
         return DUMMY
 
     return SUCCESS
