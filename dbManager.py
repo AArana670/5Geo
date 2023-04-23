@@ -27,9 +27,9 @@ def insert(body):  #signalList has already been verified
             newSignal["cId"] = signal["cId"]
         
         if "provider" in signal:
-            newSignal["provider"] = signal["provider"]
+            newSignal["operator"] = signal["operator"]
         
-        if "token" in signal:
-            newSignal["user"] = signal["token"]
+        if "token" in body:
+            newSignal["user"] = body["token"]
         
         collection.insert_one(newSignal)
