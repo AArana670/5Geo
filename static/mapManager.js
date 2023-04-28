@@ -2,8 +2,7 @@ var map = L.map('map').setView([43.26310, -2.94939], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-var markers = L.markerClusterGroup();
-map.addLayer(markers);
+var markerList = [];
 
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
@@ -13,8 +12,12 @@ fetch("http://5geo.me/signal")
 function displayMap(heatmapData){
     console.log(heatmapData)
 
-    markers.clearLayers();
+    //Clear every signal from the map
+    markerList.forEach(dot => {
+        map.removeLayer(dot);
+    });
 
+    //Create a dot per signal
     heatmapData.forEach(signal => {
         let dot = L.circleMarker([signal["ubiLat"], signal["ubiLong"]], {
             radius: 5,
@@ -22,7 +25,8 @@ function displayMap(heatmapData){
             fillColor: '#f03',
             fillOpacity: 1
         });
-        markers.addLayer(dot)
+        dot.addTo(map);
+        markerList+=[dot];
     });
 }
 
