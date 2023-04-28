@@ -1,5 +1,6 @@
 var map = L.map('map').setView([43.26310, -2.94939], 15);
 var markers = L.markerClusterGroup();
+map.addLayer(markers);
 
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
@@ -10,7 +11,6 @@ function displayMap(heatmapData){
     console.log(heatmapData)
 
     markers.clearLayers();
-    map.addLayer(markers);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
