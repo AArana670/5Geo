@@ -1,20 +1,5 @@
 var map = L.map('map').setView([43.26310, -2.94939], 15);
 
-var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-osm.addTo(map);
-
-/*var heatmap = new HeatmapOverlay({
-    radius: 0.001,
-    maxOpacity: .8,
-    minOpacity: 0,
-    scaleRadius: true,
-    useLocalExtrema: true,
-    latField: 'ubiLat',
-    lngField: 'ubiLong',
-    valueField: 'dBm'
-});*/
 
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
@@ -24,6 +9,12 @@ fetch("http://5geo.me/signal")
 function displayMap(heatmapData){
     console.log(heatmapData)
 
+    map.remove()
+
+    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
     heatmapData.forEach(signal => {
         let dot = L.circleMarker([signal["ubiLat"], signal["ubiLong"]], {
             radius: 5,
@@ -32,13 +23,6 @@ function displayMap(heatmapData){
             fillOpacity: 1
         }).addTo(map);
     });
-    
-    /*heatmap.setData({
-        max: -44,
-        min: -140,
-        data: heatmapData
-    });
-    map.addLayer(heatmap);*/
 }
 
 
@@ -60,7 +44,7 @@ function applyFilter(){
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
         let mapData = data["signals"];
-        heatmap.displayMap(mapData)});
+        displayMap(mapData)});
 }
 
 
