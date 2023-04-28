@@ -1,4 +1,7 @@
 var map = L.map('map').setView([43.26310, -2.94939], 15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 var markers = L.markerClusterGroup();
 map.addLayer(markers);
 
@@ -11,10 +14,6 @@ function displayMap(heatmapData){
     console.log(heatmapData)
 
     markers.clearLayers();
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
 
     heatmapData.forEach(signal => {
         let dot = L.circleMarker([signal["ubiLat"], signal["ubiLong"]], {
