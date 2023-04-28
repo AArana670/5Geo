@@ -10,6 +10,7 @@ function displayMap(heatmapData){
     console.log(heatmapData)
 
     markers.clearLayers();
+    map.addLayer(markers);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -22,7 +23,6 @@ function displayMap(heatmapData){
             fillColor: '#f03',
             fillOpacity: 1
         });
-        dot.addTo(map);
         markers.addLayer(dot)
     });
 }
