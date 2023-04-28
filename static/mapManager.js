@@ -5,6 +5,17 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 osm.addTo(map);
 
+var heatmap = new HeatmapOverlay({
+    radius: 0.001,
+    maxOpacity: .8,
+    minOpacity: 0,
+    scaleRadius: true,
+    useLocalExtrema: true,
+    latField: 'ubiLat',
+    lngField: 'ubiLong',
+    valueField: 'dBm'
+});
+
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
         let mapData = data["signals"];
@@ -12,23 +23,12 @@ fetch("http://5geo.me/signal")
 
 function displayMap(heatmapData){
     console.log(heatmapData)
-    var heatmap = new HeatmapOverlay({
-        radius: 0.001,
-        maxOpacity: .8,
-        minOpacity: 0,
-        scaleRadius: true,
-        useLocalExtrema: true,
-        latField: 'ubiLat',
-        lngField: 'ubiLong',
-        valueField: 'dBm'
-    });
     
     heatmap.setData({
         max: -44,
         min: -140,
         data: heatmapData
     });
-    
     map.addLayer(heatmap);
 }
 
@@ -51,7 +51,7 @@ function applyFilter(){
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
         let mapData = data["signals"];
-        displayMap(mapData)});
+        heatmap.setLatLngs(mapData)});
 }
 
 
