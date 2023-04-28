@@ -1,5 +1,5 @@
 var map = L.map('map').setView([43.26310, -2.94939], 15);
-
+var markers = L.markerClusterGroup();
 
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
@@ -9,9 +9,9 @@ fetch("http://5geo.me/signal")
 function displayMap(heatmapData){
     console.log(heatmapData)
 
-    map.remove()
+    markers.clearLayers();
 
-    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
@@ -21,7 +21,9 @@ function displayMap(heatmapData){
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 1
-        }).addTo(map);
+        });
+        dot.addTo(map);
+        markers.addLayer(dot)
     });
 }
 
