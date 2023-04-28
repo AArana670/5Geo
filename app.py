@@ -40,7 +40,7 @@ def addSignals():
 
         if (contentFormat == format.SUCCESS):
             logger.log("Correct data request from " + request.remote_addr)
-            return format.buildJson(dbManager.getSignals({})), 200
+            return format.buildJson(dbManager.getSignals(format.buildFilter(params))), 200
         else:  #contentFormat == format.FAILURE
             logger.error("Failed data request from " + request.remote_addr)
             return Response(status=400)

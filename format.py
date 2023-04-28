@@ -46,5 +46,7 @@ def verifyFilter(data):
 
 def buildFilter(data):  #data is a dictionary
                         #builds a dictionary to filter the mongoDB query
-
-    return {}
+    filter = {}
+    if "user" in data:
+        filter["user"] = data["user"]
+    return filter

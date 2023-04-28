@@ -6,7 +6,7 @@ db = client['5geo']
 collection = db.signals
 
 def getSignals(filters):  #filters has already been verified
-    res = list(collection.find({}, {'_id': 0}))  #exclude id from find
+    res = list(collection.find(filters, {'_id': 0}))  #exclude id from find
     return res
 
 
