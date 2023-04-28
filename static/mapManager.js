@@ -45,7 +45,8 @@ function applyFilter(){
     var token = document.getElementById("tokenInput").value;
 
     uri = new URL("http://5geo.me/signal");
-    uri.searchParams.set("token", token);
+    if (token)
+        uri.searchParams.set("token", token);
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
