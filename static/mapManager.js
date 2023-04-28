@@ -20,7 +20,7 @@ function displayMap(heatmapData){
     //Create a dot per signal
     heatmapData.forEach(signal => {
         let dot = L.circleMarker([signal["ubiLat"], signal["ubiLong"]], {
-            radius: 5,
+            radius: 2,
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 1
