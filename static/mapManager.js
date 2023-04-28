@@ -42,22 +42,15 @@ function applyFilter(){
     var g4 = document.getElementById("check4G").checked;
     var g5 = document.getElementById("check5G").checked;
 
-    var msg;
-    if (g4 || g5){
-        msg = "freq >= " + minFreq;
-        msg += " & freq <= " + maxFreq;
-        if (g4 && g5){
-            msg += " & (type == '4G' | type == '5G')";
-        }else if(g4){
-            msg += " & type == '4G'";
-        }else if(g5){
-            msg += " & type == '5G'";
-        }
-    }else{
-        msg = "type == ''";
-    }
+    var token = document.getElementById("tokenInput").value;
 
-    console.log(msg);
+    uri = new URL("http://5geo.me/signal");
+    uri.searchParams.set("token", token);
+
+    fetch(uri.toString())
+    .then((response) => response.json()).then(data => {
+        let mapData = data["signals"];
+        displayMap(mapData)});
 }
 
 
