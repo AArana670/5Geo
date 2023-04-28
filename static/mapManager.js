@@ -10,12 +10,12 @@ fetch("http://5geo.me/signal")
         displayMap(mapData)});
 
 function displayMap(heatmapData){
-    console.log(heatmapData)
-
     //Clear every signal from the map
     markerList.forEach(dot => {
         map.removeLayer(dot);
     });
+
+    markerList = [];
 
     //Create a dot per signal
     heatmapData.forEach(signal => {
@@ -26,7 +26,7 @@ function displayMap(heatmapData){
             fillOpacity: 1
         });
         dot.addTo(map);
-        markerList+=[dot];
+        markerList.push(dot);
     });
 }
 
