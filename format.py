@@ -42,6 +42,12 @@ def buildJson(data):  #data is a dictionary
 
 def verifyFilter(data):
 
+    if "type" in data:
+        typesList = ["NR", "LTE", "TDSCDMA", "WCDMA", "GSM"]
+        for t in data.getList("type"):
+            if t.upper() not in typesList:
+                return FAILURE
+
     return SUCCESS
 
 def buildFilter(data):  #data is a dictionary
@@ -49,4 +55,8 @@ def buildFilter(data):  #data is a dictionary
     filter = {}
     if "user" in data:
         filter["user"] = data["user"]
+
+    if "type" in data:
+        filter["type"] = {"$in": data.getList("type")}
+    
     return filter

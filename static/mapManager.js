@@ -50,14 +50,32 @@ function applyFilter(){
     var minFreq = document.getElementById("fromInput").value;
     var maxFreq = document.getElementById("toInput").value;
 
-    var g4 = document.getElementById("check4G").checked;
-    var g5 = document.getElementById("check5G").checked;
+    var nr = document.getElementById("checkNr").checked;
+    var lte = document.getElementById("checkLte").checked;
+    var tdscdma = document.getElementById("checkTdScdma").checked;
+    var wcdma = document.getElementById("checkWcdma").checked;
+    var gsm = document.getElementById("checkGsm").checked;
 
     var token = document.getElementById("tokenInput").value;
 
     uri = new URL("http://5geo.me/signal");
     if (token)
         uri.searchParams.set("user", token);
+    
+    if (nr)
+        uri.searchParams.set("type", "NR");
+    
+    if (lte)
+        uri.searchParams.set("type", "LTE");
+    
+    if (tdscdma)
+        uri.searchParams.set("type", "TDSCDMA");
+    
+    if (wcdma)
+        uri.searchParams.set("type", "WCDMA");
+    
+    if (gsm)
+        uri.searchParams.set("type", "GSM");
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
