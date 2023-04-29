@@ -63,7 +63,7 @@ function applyFilter(){
         uri.searchParams.append("user", token);
     
     if (nr)
-        uri.searchParams.append("type", "NR");
+        uri.searchParams.append("type", "NR");  //https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append
     
     if (lte)
         uri.searchParams.append("type", "LTE");

@@ -44,14 +44,14 @@ def verifyFilter(data):
 
     if "type" in data:
         typesList = ["NR", "LTE", "TDSCDMA", "WCDMA", "GSM"]
-        for t in data.getlist("type"):
+        for t in data.getlist("type"):  #https://stackoverflow.com/a/14188496
             if t.upper() not in typesList:
                 return FAILURE
 
     return SUCCESS
 
 def buildFilter(data):  #data is a dictionary
-                        #builds a dictionary to filter the mongoDB query
+                        #builds a dictionary in the format of a mongoDB query
     filter = {}
     if "user" in data:
         filter["user"] = data["user"]
