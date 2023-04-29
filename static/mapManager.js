@@ -1,3 +1,6 @@
+const minDBm = -140;
+const maxDBm = -44;
+
 var map = L.map('map').setView([43.26310, -2.94939], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -21,13 +24,25 @@ function displayMap(heatmapData){
     heatmapData.forEach(signal => {
         let dot = L.circleMarker([signal["ubiLat"], signal["ubiLong"]], {
             radius: 2,
-            color: 'red',
-            fillColor: '#f03',
+            color: numberToColorHsl(signal["dBm"]),
+            fillColor: numberToColorHsl(signal["dBm"]),
             fillOpacity: 1
         });
         dot.addTo(map);
         markerList.push(dot);
     });
+}
+
+function numberToColorHsl(dBm) {  //https://stackoverflow.com/a/17527156
+    //Conversion to a value from 0 to 1
+    i = (dBm - minDBm)/(maxDBm-minDBm);
+    // as the function expects a value between 0 and 1, and red = 0° and green = 120°
+    // we convert the input to the appropriate hue value
+    var hue = i * 1.2 / 360;
+    // we convert hsl to rgb (saturation 100%, lightness 50%)
+    var rgb = hslToRgb(hue, 1, .5);
+    // we format to css value and return
+    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')'; 
 }
 
 
