@@ -36,13 +36,11 @@ function displayMap(heatmapData){
 function numberToColorHsl(dBm) {  //https://stackoverflow.com/a/17527156
     //Conversion to a value from 0 to 1
     i = (dBm - minDBm)/(maxDBm-minDBm);
-    // as the function expects a value between 0 and 1, and red = 0° and green = 120°
-    // we convert the input to the appropriate hue value
-    var hue = i * 1.2 / 360;
-    // we convert hsl to rgb (saturation 100%, lightness 50%)
-    var rgb = hslToRgb(hue, 1, .5);
+    // we calculate red and green
+    var red = Math.floor(255 - (255 * i / 100));
+    var green = Math.floor(255 * i / 100);
     // we format to css value and return
-    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')'; 
+    return 'rgb('+red+','+green+',0)'
 }
 
 
