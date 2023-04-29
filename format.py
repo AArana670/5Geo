@@ -44,7 +44,7 @@ def verifyFilter(data):
 
     if "type" in data:
         typesList = ["NR", "LTE", "TDSCDMA", "WCDMA", "GSM"]
-        for t in data.getList("type"):
+        for t in data.getlist("type"):
             if t.upper() not in typesList:
                 return FAILURE
 
@@ -57,6 +57,6 @@ def buildFilter(data):  #data is a dictionary
         filter["user"] = data["user"]
 
     if "type" in data:
-        filter["type"] = {"$in": data.getList("type")}
+        filter["type"] = {"$in": data.getlist("type")}
     
     return filter
