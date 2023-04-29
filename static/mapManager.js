@@ -37,10 +37,10 @@ function numberToColorHsl(dBm) {  //https://stackoverflow.com/a/17527156
     //Conversion to a value from 0 to 1
     i = (dBm - minDBm)/(maxDBm-minDBm);
     // we calculate red and green
-    var red = Math.floor(255 - (255 * i / 100));
-    var green = Math.floor(255 * i / 100);
+    var red = Math.floor(255 - (255 * i));
+    var green = Math.floor(255 * i);
     // we format to css value and return
-    return 'rgb('+red+','+green+',0)'
+    return 'rgb('+red+','+green+',0)';
 }
 
 
