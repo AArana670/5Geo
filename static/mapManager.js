@@ -60,22 +60,22 @@ function applyFilter(){
 
     uri = new URL("http://5geo.me/signal");
     if (token)
-        uri.searchParams.set("user", token);
+        uri.searchParams.append("user", token);
     
     if (nr)
-        uri.searchParams.set("type", "NR");
+        uri.searchParams.append("type", "NR");
     
     if (lte)
-        uri.searchParams.set("type", "LTE");
+        uri.searchParams.append("type", "LTE");
     
     if (tdscdma)
-        uri.searchParams.set("type", "TDSCDMA");
+        uri.searchParams.append("type", "TDSCDMA");
     
     if (wcdma)
-        uri.searchParams.set("type", "WCDMA");
+        uri.searchParams.append("type", "WCDMA");
     
     if (gsm)
-        uri.searchParams.set("type", "GSM");
+        uri.searchParams.append("type", "GSM");
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
