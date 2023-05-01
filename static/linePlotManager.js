@@ -18,7 +18,7 @@ function displayGraph(graphData){
         var signalsPerTime = timeline.map(time => signals.filter(signal => signal.moment == time));
         console.log(signalsPerTime);
         var dBm = signalsPerTime.map(signal => signal.dBm)
-                    .map(signalList => signalList.reduce((a, b) => a + b, 0)/signalList.length);
+                    .reduce((a, b) => a + b, 0);
         console.log(dBm);
 
         return {
