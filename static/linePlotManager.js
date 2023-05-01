@@ -1,4 +1,14 @@
+function groupBy(arr, property) {  //https://stackoverflow.com/a/14696535
+    return arr.reduce(function(memo, x) {
+      if (!memo[x[property]]) { memo[x[property]] = []; }
+      memo[x[property]].push(x);
+      return memo;
+    }, {});
+  }
+
 function displayGraph(graphData){
+
+    freqDivision = groupBy(graphData, "freq");
 
     //fake timeline
     datasetX=[]
@@ -16,7 +26,7 @@ function displayGraph(graphData){
         datasetY.push(-(Math.random()*80+40));
     }
 
-    console.log(graphData);
+    console.log(freqDivision);
 
 
     var trace1 = {
