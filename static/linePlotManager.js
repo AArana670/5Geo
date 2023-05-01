@@ -15,8 +15,9 @@ function displayGraph(graphData){
     traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
         var signalsPerMoment = timeline.map(time => signals.filter(signal => signal.moment == time))
-                                .map(signal => signal.dBm
-                                .reduce((a, b) => a + b, 0)/signal.length);
+                                .map(signal => signal.dBm)
+                                .reduce((a, b) => a + b, 0);
+        console.log(signalsPerMoment);
         return {
             x: timeline,
             y: signalsPerMoment,
