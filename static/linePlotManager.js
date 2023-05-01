@@ -16,13 +16,13 @@ function displayGraph(graphData){
         var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
         var signalsPerTime = timeline.map(time => signals.filter(signal => signal.moment == time));
         console.log(signalsPerTime);
-        var dBm = signalsPerTime.map(signal => signal.dBm)
-                    /*.reduce((a, b) => a + b, 0)*/;
-        console.log(dBm);
+        var dBmList = signalsPerTime.map(signal => signal.dBm);
+        var meanDBm = dBmList.reduce((a, b) => a + b/dBmList.length, 0);
+        console.log(meanDBm);
 
         return {
             x: timeline,
-            y: dBm,
+            y: meanDBm,
             type: 'scatter',
             name: freq+'Hz'
         };
