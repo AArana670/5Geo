@@ -37,7 +37,7 @@ function applyFilter(){
         displayMap(mapData)
         if (token){
             var graphData = data["signals"]
-            
+            displayGraph(graphData);
         }
     });
 }
