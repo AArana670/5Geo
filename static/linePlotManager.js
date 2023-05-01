@@ -48,9 +48,14 @@ function displayGraph(graphData){
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
+        yaxis: {
+            range: [-140, -44],
+            type: 'linear'
+        }
         /*plot_bgcolor:"#303030",
         paper_bgcolor:"#FFF3"*/
-    }
+    };
+      
   
   Plotly.newPlot('timeEvo', data, layout);
 }
