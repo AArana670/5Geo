@@ -14,9 +14,10 @@ function displayGraph(graphData){
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
     traceList = Object.entries(freqDivision).map(([freq, signals]) => ({
         x: timeline=[...new Set(signals.map(signal => signal.moment))],  //https://stackoverflow.com/a/35092559
-        y: timeline.map(moment => signals.filter(signal => signal.moment = moment).map(signal => signal.dBm)),
+        y: timeline.map(time => signals.filter(signal => signal.moment = time).map(signal => parseInt(signal.dBm))),
         type: 'scatter',
-        name: freq+'Hz'}));
+        name: freq+'Hz'
+    }));
 
     //fake timeline
     /*datasetX=[]
@@ -48,10 +49,10 @@ function displayGraph(graphData){
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
-        yaxis: {
+        /*yaxis: {
             range: [-140, -44],
             type: 'linear'
-        }
+        }*/
         /*plot_bgcolor:"#303030",
         paper_bgcolor:"#FFF3"*/
     };
