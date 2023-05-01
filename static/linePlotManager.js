@@ -14,13 +14,13 @@ function displayGraph(graphData){
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
     traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
-        var signalsPerMoment = timeline.map(time => signals.filter(signal => signal.moment == time))
-                                .map(signal => signal.dBm)
-                                .reduce((a, b) => a + b, 0);
-        console.log(signalsPerMoment);
+        var dBm = timeline.map(time => signals.filter(signal => signal.moment == time))
+                                .map(signal => signal.dBm);
+                                //.reduce((a, b) => a + b, 0);
+        console.log(dBm);
         return {
             x: timeline,
-            y: signalsPerMoment,
+            y: dBm,
             type: 'scatter',
             name: freq+'Hz'
         };
