@@ -1,4 +1,6 @@
-function createGraph(lat,lng){
+function displayGraph(graphData){
+
+    //fake timeline
     datasetX=[]
     for (var i=0; i<60; i++) {
         if (i<10){
@@ -8,10 +10,13 @@ function createGraph(lat,lng){
         }
     }
 
+    //random data for testing
     datasetY=[]
     for (var i=0; i<60; i++) {
         datasetY.push(-(Math.random()*80+40));
     }
+
+    console.log(graphData);
 
 
     var trace1 = {
@@ -24,7 +29,7 @@ function createGraph(lat,lng){
     var data = [trace1];
 
     var layout = {
-        title: "Emisión EM en "+lat+", "+lng,
+        //title: "Emisión EM en "+lat+", "+lng,
         /*plot_bgcolor:"#303030",
         paper_bgcolor:"#FFF3"*/
     }
