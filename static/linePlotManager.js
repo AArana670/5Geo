@@ -8,35 +8,43 @@ function groupBy(arr, property) {  //https://stackoverflow.com/a/14696535
 
 function displayGraph(graphData){
 
+    //group the signals by frequency
     freqDivision = groupBy(graphData, "freq");
 
+    //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
+    traceList = Object.entries(freqDivision).map(([freq, signals]) => ({
+        x: timeline=[...new Set(signals.map(signal => signal.moment))],  //https://stackoverflow.com/a/35092559
+        y: timeline.map(moment => signals.filter(signal => signal.moment = moment).map(signal => signal.dBm)),
+        type: 'scatter',
+        name: freq+'Hz'}));
+
     //fake timeline
-    datasetX=[]
+    /*datasetX=[]
     for (var i=0; i<60; i++) {
         if (i<10){
             datasetX.push("10:0"+i);
         }else{
             datasetX.push("10:"+i);
         }
-    }
+    }*/
 
     //random data for testing
-    datasetY=[]
+    /*datasetY=[]
     for (var i=0; i<60; i++) {
         datasetY.push(-(Math.random()*80+40));
-    }
+    }*/
 
-    console.log(freqDivision);
+    console.log(traceList);
 
 
-    var trace1 = {
+    /*var trace1 = {
         x: datasetX,
         y: datasetY,
         type: 'scatter',
         name: "Señal 1"
-        };
+        };*/
     
-    var data = [trace1];
+    var data = traceList;
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
