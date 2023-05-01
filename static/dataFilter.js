@@ -12,6 +12,11 @@ function applyFilter(){
 
     var token = document.getElementById("tokenInput").value;
 
+    var minTime = document.getElementById("minTime").value;
+    var maxTime = document.getElementById("maxTime").value;
+
+    console.log(mintime + " | " + maxTime);
+
     uri = new URL("http://5geo.me/signal");
     if (token)
         uri.searchParams.append("user", token);
@@ -30,6 +35,12 @@ function applyFilter(){
     
     if (gsm)
         uri.searchParams.append("type", "GSM");
+
+    if (minTime)
+        uri.searchParams.append("minTime", minTime);
+    
+    if (maxTime)
+        uri.searchParams.append("maxTime", maxTime);
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
