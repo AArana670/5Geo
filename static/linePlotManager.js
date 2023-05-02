@@ -29,7 +29,7 @@ function displayGraph(graphData){
 
 
     console.time('Alternative Code');
-    var traceList = Array.from(freqDivision.entries()).map(([freq, signals]) => {
+    const traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         const timeline = new Set();
         const meanDBm = new Map();
     
