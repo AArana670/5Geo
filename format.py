@@ -66,10 +66,10 @@ def buildFilter(data):  #data is a dictionary verified by verifyFilter
     freqConditions = {}
     
     if "minFreq" in data:
-        freqConditions["$gte"] = data["minFreq"]
+        freqConditions["$gte"] = int(data["minFreq"])
     
     if "maxFreq" in data:
-        freqConditions["$lte"] = data["maxFreq"]
+        freqConditions["$lte"] = int(data["maxFreq"])
     
     if freqConditions:
         filter["freq"] = freqConditions
