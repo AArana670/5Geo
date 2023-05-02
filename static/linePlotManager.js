@@ -11,24 +11,7 @@ function displayGraph(graphData){
     //group the signals by frequency
     var freqDivision = groupBy(graphData, "freq");
 
-    console.time('Original Code');
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
-    var traceList = Object.entries(freqDivision).map(([freq, signals]) => {
-        var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
-        var meanDBm = timeline.map(time => signals.filter(signal => signal.moment == time))  //signals per time
-                            .map(signalList => signalList.reduce((a, b) => a + b.dBm, 0)/signalList.length);
-
-        return {
-            x: timeline,
-            y: meanDBm,
-            type: 'scatter',
-            name: freq+'Hz'
-        };
-    });
-    console.timeEnd('Original Code');
-
-
-    console.time('Alternative Code');
     traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         timeline = new Set();
         meanDBm = new Map();
@@ -53,8 +36,6 @@ function displayGraph(graphData){
             name: freq + 'Hz',
         };
     });
-    console.timeEnd('Alternative Code');
-    
     
     var data = traceList;
 
