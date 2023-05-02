@@ -21,7 +21,7 @@ function displayGraph(graphData){
 
         return {
             x: timeline,
-            y: dBmList,
+            y: meanDBm,
             type: 'scatter',
             name: freq+'Hz'
         };
