@@ -49,6 +49,7 @@ def verifyFilter(data):
                 return FAILURE
     
     if "minFreq" in data and "maxFreq" in data:
+        print(data["minFreq"] + " - " + data["maxFreq"])
         if data["minFreq"] > data["maxFreq"]:
             return FAILURE
 
