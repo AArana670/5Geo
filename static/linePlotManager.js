@@ -11,8 +11,9 @@ function displayGraph(graphData){
     //group the signals by frequency
     var freqDivision = groupBy(graphData, "freq");
 
+    console.time('Original Code');
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
-    traceList = Object.entries(freqDivision).map(([freq, signals]) => {
+    var traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
         var meanDBm = timeline.map(time => signals.filter(signal => signal.moment == time))  //signals per time
                             .map(signalList => signalList.reduce((a, b) => a + b.dBm, 0)/signalList.length);
@@ -24,30 +25,36 @@ function displayGraph(graphData){
             name: freq+'Hz'
         };
     });
-
-    //fake timeline
-    /*datasetX=[]
-    for (var i=0; i<60; i++) {
-        if (i<10){
-            datasetX.push("10:0"+i);
-        }else{
-            datasetX.push("10:"+i);
-        }
-    }*/
-
-    //random data for testing
-    /*datasetY=[]
-    for (var i=0; i<60; i++) {
-        datasetY.push(-(Math.random()*80+40));
-    }*/
+    console.timeEnd('Original Code');
 
 
-    /*var trace1 = {
-        x: datasetX,
-        y: datasetY,
-        type: 'scatter',
-        name: "Señal 1"
-        };*/
+    console.time('Alternative Code');
+    var traceList = Array.from(freqDivision.entries()).map(([freq, signals]) => {
+        const timeline = new Set();
+        const meanDBm = new Map();
+    
+        signals.forEach(signal => {
+            timeline.add(signal.moment);
+            if (!meanDBm.has(signal.moment)) {
+                meanDBm.set(signal.moment, { sum: 0, count: 0 });
+            }
+            const entry = meanDBm.get(signal.moment);
+            entry.sum += signal.dBm;
+            entry.count++;
+        });
+    
+        const x = Array.from(timeline);
+        const y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
+    
+        return {
+            x,
+            y,
+            type: 'scatter',
+            name: freq + 'Hz',
+        };
+    });
+    console.timeEnd('Alternative Code');
+    
     
     var data = traceList;
 
