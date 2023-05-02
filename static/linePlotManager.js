@@ -59,7 +59,7 @@ function displayGraph(graphData){
         //title: "Emisión EM en "+lat+", "+lng,
         xaxis:{
             rangeslider:{
-                visible:True
+                visible:true
             },
             type:"date"
         }
