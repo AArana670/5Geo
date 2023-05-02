@@ -12,22 +12,22 @@ function displayGraph(graphData){
     var freqDivision = groupBy(graphData, "freq");
 
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
-    traceList = Object.entries(freqDivision).map(([freq, signals]) => {
-        timeline = new Set();
-        meanDBm = new Map();
+    const traceList = Object.entries(freqDivision).map(([freq, signals]) => {
+        const timeline = new Set();
+        const meanDBm = new Map();
     
         signals.forEach(signal => {
             timeline.add(signal.moment);
             if (!meanDBm.has(signal.moment)) {
                 meanDBm.set(signal.moment, { sum: 0, count: 0 });
             }
-            entry = meanDBm.get(signal.moment);
+            const entry = meanDBm.get(signal.moment);
             entry.sum += signal.dBm;
             entry.count++;
         });
     
-        x = Array.from(timeline);
-        y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
+        const x = Array.from(timeline);
+        const y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
     
         return {
             x,
@@ -36,8 +36,6 @@ function displayGraph(graphData){
             name: freq + 'Hz',
         };
     });
-    
-    var data = traceList;
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
@@ -56,7 +54,7 @@ function displayGraph(graphData){
     };
       
   
-  Plotly.newPlot('timeEvo', data, layout);
+  Plotly.newPlot('timeEvo', traceList, layout);
 }
 
 
