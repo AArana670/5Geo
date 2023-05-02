@@ -14,10 +14,8 @@ function displayGraph(graphData){
     //turn the signal arrays into traces for the graph: https://stackoverflow.com/a/64168282
     traceList = Object.entries(freqDivision).map(([freq, signals]) => {
         var timeline = [...new Set(signals.map(signal => signal.moment))];  //https://stackoverflow.com/a/35092559
-        var signalsPerTime = timeline.map(time => signals.filter(signal => signal.moment == time));
-        console.log(signalsPerTime);
-        var meanDBm = signalsPerTime.map(signalList => signalList.reduce((a, b) => a + b.dBm, 0)/signalList.length);
-        console.log(meanDBm);
+        var meanDBm = timeline.map(time => signals.filter(signal => signal.moment == time))  //signals per time
+                            .map(signalList => signalList.reduce((a, b) => a + b.dBm, 0)/signalList.length);
 
         return {
             x: timeline,
@@ -43,8 +41,6 @@ function displayGraph(graphData){
         datasetY.push(-(Math.random()*80+40));
     }*/
 
-    console.log(traceList);
-
 
     /*var trace1 = {
         x: datasetX,
@@ -57,7 +53,7 @@ function displayGraph(graphData){
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
-        xaxis:{
+        xaxis:{  //https://plotly.com/python/range-slider/
             rangeslider:{
                 visible:true
             },
