@@ -15,8 +15,6 @@ function applyFilter(){
     /*var minTime = document.getElementById("minTime").value;
     var maxTime = document.getElementById("maxTime").value;*/
 
-    console.log(minTime + " | " + maxTime);
-
     uri = new URL("http://5geo.me/signal");
     if (token)
         uri.searchParams.append("user", token);
