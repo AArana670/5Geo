@@ -57,6 +57,12 @@ function displayGraph(graphData){
 
     var layout = {
         //title: "Emisión EM en "+lat+", "+lng,
+        xaxis:{
+            rangeslider:{
+                visible:True
+            },
+            type:"date"
+        }
         /*yaxis: {
             range: [-140, -44],
             type: 'linear'
