@@ -12,8 +12,8 @@ function applyFilter(){
 
     var token = document.getElementById("tokenInput").value;
 
-    var minTime = document.getElementById("minTime").value;
-    var maxTime = document.getElementById("maxTime").value;
+    /*var minTime = document.getElementById("minTime").value;
+    var maxTime = document.getElementById("maxTime").value;*/
 
     console.log(minTime + " | " + maxTime);
 
@@ -36,11 +36,11 @@ function applyFilter(){
     if (gsm)
         uri.searchParams.append("type", "GSM");
 
-    if (minTime)
+    /*if (minTime)
         uri.searchParams.append("minTime", minTime);
     
     if (maxTime)
-        uri.searchParams.append("maxTime", maxTime);
+        uri.searchParams.append("maxTime", maxTime);*/
     
     if (minFreq.value != minFreq.min)
         uri.searchParams.append("minFreq", minFreq.value);
