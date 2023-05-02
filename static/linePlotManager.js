@@ -17,12 +17,12 @@ function displayGraph(graphData){
         var signalsPerTime = timeline.map(time => signals.filter(signal => signal.moment == time));
         console.log(signalsPerTime);
         var dBmList = signalsPerTime.map(signal => signal.dBm);
-        var meanDBm = dBmList.reduce((a, b) => a + b/dBmList.length, 0);
+        var meanDBm = dBmLists.map(dBmList => dBmList.reduce((a, b) => a + b/dBmList.length, 0));
         console.log(meanDBm);
 
         return {
             x: timeline,
-            y: meanDBm,
+            y: dBmList,
             type: 'scatter',
             name: freq+'Hz'
         };
