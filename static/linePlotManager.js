@@ -29,22 +29,22 @@ function displayGraph(graphData){
 
 
     console.time('Alternative Code');
-    const traceList = Object.entries(freqDivision).map(([freq, signals]) => {
-        const timeline = new Set();
-        const meanDBm = new Map();
+    traceList = Object.entries(freqDivision).map(([freq, signals]) => {
+        timeline = new Set();
+        meanDBm = new Map();
     
         signals.forEach(signal => {
             timeline.add(signal.moment);
             if (!meanDBm.has(signal.moment)) {
                 meanDBm.set(signal.moment, { sum: 0, count: 0 });
             }
-            const entry = meanDBm.get(signal.moment);
+            entry = meanDBm.get(signal.moment);
             entry.sum += signal.dBm;
             entry.count++;
         });
     
-        const x = Array.from(timeline);
-        const y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
+        x = Array.from(timeline);
+        y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
     
         return {
             x,
