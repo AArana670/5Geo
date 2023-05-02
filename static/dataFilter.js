@@ -1,8 +1,8 @@
 function applyFilter(){
     console.warn("Incomplete method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning");
 
-    var minFreq = document.getElementById("fromInput").value;
-    var maxFreq = document.getElementById("toInput").value;
+    var minFreq = document.getElementById("fromFreqInput");
+    var maxFreq = document.getElementById("toFreqInput");
 
     var nr = document.getElementById("checkNr").checked;
     var lte = document.getElementById("checkLte").checked;
@@ -41,6 +41,12 @@ function applyFilter(){
     
     if (maxTime)
         uri.searchParams.append("maxTime", maxTime);
+    
+    if (minFreq.value != minFreq.min)
+        uri.searchParams.append("minFreq", minFreq.value);
+
+    if (maxFreq.value != maxFreq.max)
+        uri.searchParams.append("maxFreq", maxFreq.value);
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
