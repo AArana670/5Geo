@@ -33,7 +33,7 @@ function displayGraph(graphData){
             x,
             y,
             type: 'scatter',
-            name: freq + 'Hz',
+            name: freq + 'MHz',
         };
     });
 
