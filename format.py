@@ -66,10 +66,10 @@ def buildFilter(data):  #data is a dictionary verified by verifyFilter
     freqConditions = {}
     
     if "minFreq" in data:
-        freqConditions["$gte"] = int(data["minFreq"])
+        freqConditions["$gte"] = int(data["minFreq"])  #will likely have a default value to hide 0MHz
     
     if "maxFreq" in data:
-        freqConditions["$lte"] = int(data["maxFreq"])
+        freqConditions["$lte"] = int(data["maxFreq"])  #will likely have a default value to hide 10GHz
     
     if freqConditions:
         filter["freq"] = freqConditions

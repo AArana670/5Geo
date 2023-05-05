@@ -5,7 +5,7 @@ client = MongoClient("localhost", 27017)
 db = client['5geo']
 collection = db.signals
 
-def getSignals(filters):  #filters has already been verified
+def getSignals(filters):  #filters has already been verified and built in MongoDB query format
     res = list(collection.find(filters, {'_id': 0}))  #exclude id from find
     return res
 
