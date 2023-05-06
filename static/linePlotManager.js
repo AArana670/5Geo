@@ -33,7 +33,7 @@ function displayGraph(graphData){
             x,
             y,
             type: 'scatter',
-            name: freq + 'Hz',
+            name: freq + 'MHz',
         };
     });
 
@@ -45,10 +45,6 @@ function displayGraph(graphData){
             },
             type:"date"
         }
-        /*yaxis: {
-            range: [-140, -44],
-            type: 'linear'
-        }*/
         /*plot_bgcolor:"#303030",
         paper_bgcolor:"#FFF3"*/
     };
