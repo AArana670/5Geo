@@ -6,7 +6,9 @@ toggle.addEventListener('input', e => {
 
     if (isChecked) {
         body.classList.add('dark-theme');
+        turnDarkGraph();
     } else {
         body.classList.remove('dark-theme');
+        turnLightGraph();
     }
 });

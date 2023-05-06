@@ -58,8 +58,19 @@ function displayGraph(graphData){
 }
 
 
-
 function downloadGraph(){
     console.warn("Incomplete method:", "The method 'downloadGraph()' has not been implemented, please fill the function before removing this warning");
+
+}
+
+function turnDarkGraph(){
+    var update = {
+        plot_bgcolor:"#303030",
+        paper_bgcolor:"#FFF3"
+    };
+    Plotly.restyle("timeEvo", update, layout);
+}
+
+function turnLightGraph(){
 
 }
