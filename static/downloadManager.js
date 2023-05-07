@@ -26,7 +26,7 @@ function downloadMap(){
     downloadable = ConvertToCSV(mapData);
     console.log(downloadable);
     //https://stackoverflow.com/a/14966131
-    var encodedUri = encodeURI(csvContent);
+    var encodedUri = encodeURI(downloadable);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "5Geo_map.csv");
@@ -39,7 +39,7 @@ function downloadGraph(){
     downloadable = ConvertToCSV(graphData);
     console.log(downloadable);
     //https://stackoverflow.com/a/14966131
-    var encodedUri = encodeURI(csvContent);
+    var encodedUri = encodeURI(downloadable);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "5Geo_graph.csv");
