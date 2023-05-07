@@ -26,7 +26,7 @@ function downloadMap(){
     downloadable = ConvertToCSV(mapData);
     //https://stackoverflow.com/a/14966131
     var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(downloadable);
     hiddenElement.target = '_blank';
     
     //provide the name for the CSV file to be downloaded
@@ -39,7 +39,7 @@ function downloadGraph(){
     downloadable = ConvertToCSV(graphData);
     //https://stackoverflow.com/a/14966131
     var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(downloadable);
     hiddenElement.target = '_blank';
     
     //provide the name for the CSV file to be downloaded
