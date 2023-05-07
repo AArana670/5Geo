@@ -25,14 +25,24 @@ function downloadMap(){
     console.warn("Incomplete method:", "The method 'downloadMap' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(mapData);
     console.log(downloadable);
-    const $link = $('<a/>',{ href: "data:text/csv;charset=utf-8,"+escape(downloadable), download:"5geo_map.csv",text:"download"});
-    $link[0].click(); // have to trigger native click
+    //https://stackoverflow.com/a/14966131
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "5Geo_map.csv");
+    document.body.appendChild(link); // Required for FF
+    link.click();
 }
 
 function downloadGraph(){
     console.warn("Incomplete method:", "The method 'downloadGraph' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(graphData);
     console.log(downloadable);
-    const $link = $('<a/>',{ href: "data:text/csv;charset=utf-8,"+escape(downloadable), download:"5geo_graph.csv",text:"download"});
-    $link[0].click(); // have to trigger native click
+    //https://stackoverflow.com/a/14966131
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "5Geo_graph.csv");
+    document.body.appendChild(link); // Required for FF
+    link.click();
 }
