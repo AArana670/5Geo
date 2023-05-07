@@ -42,19 +42,19 @@ function displayGraph(graphData){
         xaxis:{  //https://plotly.com/python/range-slider/
             rangeselector:{
                 buttons:[
-                    dict(count=1,
-                         label="1m",
-                         step="month",
-                         stepmode="backward"),
-                    dict(count=6,
-                         label="6d",
-                         step="day",
-                         stepmode="backward"),
-                    dict(count=1,
-                         label="1h",
-                         step="hour",
-                         stepmode="backward"),
-                    dict(step="all")
+                    {count:1,
+                         label:"1m",
+                         step:"month",
+                         stepmode:"backward"},
+                    {count:6,
+                         label:"6d",
+                         step:"day",
+                         stepmode:"backward"},
+                    {count:1,
+                         label:"1h",
+                         step:"hour",
+                         stepmode:"backward"},
+                    {step:"all"}
                 ]
             },
             rangeslider:{
