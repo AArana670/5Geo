@@ -25,6 +25,7 @@ function downloadMap(){
     console.warn("Incomplete method:", "The method 'downloadMap' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(mapData);
     //https://stackoverflow.com/a/14966131
+    var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
     hiddenElement.target = '_blank';
     
@@ -37,6 +38,7 @@ function downloadGraph(){
     console.warn("Incomplete method:", "The method 'downloadGraph' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(graphData);
     //https://stackoverflow.com/a/14966131
+    var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
     hiddenElement.target = '_blank';
     
