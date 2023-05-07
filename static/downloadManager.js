@@ -10,6 +10,7 @@ function ConvertToCSV (data) {
       )
     )
     csv=csv.join("\n");
+    return csv;
 }
 
 function setMapData(data){
@@ -24,10 +25,14 @@ function downloadMap(){
     console.warn("Incomplete method:", "The method 'downloadMap' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(mapData);
     console.log(downloadable);
+    const $link = $('<a/>',{ href: "data:text/csv;charset=utf-8,"+escape(downloadable), download:"5geo_map.csv",text:"download"});
+    $link[0].click(); // have to trigger native click
 }
 
 function downloadGraph(){
     console.warn("Incomplete method:", "The method 'downloadGraph' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(graphData);
     console.log(downloadable);
+    const $link = $('<a/>',{ href: "data:text/csv;charset=utf-8,"+escape(downloadable), download:"5geo_graph.csv",text:"download"});
+    $link[0].click(); // have to trigger native click
 }
