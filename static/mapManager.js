@@ -53,13 +53,6 @@ map.on('click', function(e){
     });
 
 
-function downloadMap(){
-    console.warn("Incomplete method:", "The method 'downloadMap()' has not been implemented, please fill the function before removing this warning");
-
-
-}
-
-
 function dropDown() {
     document.getElementById("myDropdown").classList.toggle("show");
 }

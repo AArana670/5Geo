@@ -48,10 +48,10 @@ function applyFilter(){
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
-        mapData = data["signals"];
+        setMapData(data["signals"]);
         displayMap(mapData)
         if (token){
-            var graphData = data["signals"]
+            setGraphData(data["signals"]);
             displayGraph(graphData);
         }
     });
