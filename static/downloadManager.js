@@ -30,8 +30,10 @@ function downloadMap(){
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "5Geo_map.csv");
-    document.body.appendChild(link); // Required for FF
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
 }
 
 function downloadGraph(){
@@ -43,6 +45,8 @@ function downloadGraph(){
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "5Geo_graph.csv");
-    document.body.appendChild(link); // Required for FF
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
 }
