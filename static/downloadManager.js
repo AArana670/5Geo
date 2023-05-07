@@ -24,29 +24,23 @@ function setGraphData(data){
 function downloadMap(){
     console.warn("Incomplete method:", "The method 'downloadMap' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(mapData);
-    console.log(downloadable);
     //https://stackoverflow.com/a/14966131
-    var encodedUri = encodeURI(downloadable);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "5Geo_map.csv");
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+    
+    //provide the name for the CSV file to be downloaded
+    hiddenElement.download = '5geo_map.csv';
+    hiddenElement.click();
 }
 
 function downloadGraph(){
     console.warn("Incomplete method:", "The method 'downloadGraph' has not been implemented, please fill the function before removing this warning");
     downloadable = ConvertToCSV(graphData);
-    console.log(downloadable);
     //https://stackoverflow.com/a/14966131
-    var encodedUri = encodeURI(downloadable);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "5Geo_graph.csv");
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+    
+    //provide the name for the CSV file to be downloaded
+    hiddenElement.download = '5geo_graph.csv';
+    hiddenElement.click();
 }
