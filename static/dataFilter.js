@@ -51,10 +51,10 @@ function withinRange(signal, objLat, objLong, zoom){
     if (round < 0)
         round = 0;
 
-    if (Math.abs(signal["ubiLat"] - objLat) > 0.01/(zoom^3))
+    if (Math.abs(signal["ubiLat"] - objLat) > 0.1/(zoom^4))
         return false;
 
-    if (Math.abs(signal["ubiLong"] - objLong) > 0.01/(zoom^3))
+    if (Math.abs(signal["ubiLong"] - objLong) > 0.1/(zoom^4))
         return false;
     
     return true;
