@@ -102,7 +102,7 @@ body.dark-theme .filter_title{
 
 
 
-/*Dual slider range*/
+/*Dual slider range: https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816*/
 
 .range_container {
 	display: flex;
@@ -195,7 +195,7 @@ input[type=number] {
 	pointer-events: none;
   }
   
-  #fromSlider {
+  #fromFreqSlider {
 	height: 0;
 	z-index: 1;
   }
