@@ -48,8 +48,7 @@ map.on('click', function(e){
     var zoom = map.getZoom();
     var lat = e.latlng.lat;
     var lng = e.latlng.lng;
-
-    console.log(zoom + ": " + lat + " | " + lng)
+    
     setGraphData(coordFilter(mapData, lat, lng, zoom));
     displayGraph(graphData, "Datos de señales en " + lat + ", " + lng);
     });

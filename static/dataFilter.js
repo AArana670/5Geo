@@ -47,9 +47,12 @@ function applyFilter(){
 }
 
 function coordFilter(data, lat, lng, zoom){
+    round = zoom - 5;
 
     objLat = lat.toFixed(zoom);
     objLong = lng.toFixed(zoom);
+
+    console.log(zoom + ": " + objLat + " | " + objLong);
 
     newData = data.filter(signal => (signal.ubiLat.toFixed(zoom) == objLat && signal.ubiLong.toFixed(zoom) == objLong));
     console.log(newData);
