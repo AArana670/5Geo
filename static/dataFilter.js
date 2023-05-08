@@ -65,7 +65,7 @@ function withinRange(signal, lat, lng, zoom){
 
 function coordFilter(data, lat, lng, zoom){
 
-    console.log(zoom + ": " + lat + " | " + long);
+    console.log(zoom + ": " + lat + " | " + lng);
     newData = data.filter(signal => withinRange(signal, lat, lng, zoom));
     console.log(newData);
 
