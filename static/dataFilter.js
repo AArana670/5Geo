@@ -1,6 +1,4 @@
 function applyFilter(){
-    console.warn("Incomplete method:", "The method 'applyFilter()' has not been implemented, please fill the function before removing this warning");
-
     var minFreq = document.getElementById("fromFreqInput");
     var maxFreq = document.getElementById("toFreqInput");
 
@@ -11,9 +9,6 @@ function applyFilter(){
     var gsm = document.getElementById("checkGsm").checked;
 
     var token = document.getElementById("tokenInput").value;
-
-    /*var minTime = document.getElementById("minTime").value;
-    var maxTime = document.getElementById("maxTime").value;*/
 
     uri = new URL("http://5geo.me/signal");
     if (token)
@@ -33,12 +28,6 @@ function applyFilter(){
     
     if (gsm)
         uri.searchParams.append("type", "GSM");
-
-    /*if (minTime)
-        uri.searchParams.append("minTime", minTime);
-    
-    if (maxTime)
-        uri.searchParams.append("maxTime", maxTime);*/
     
     if (minFreq.value != minFreq.min)
         uri.searchParams.append("minFreq", minFreq.value);
