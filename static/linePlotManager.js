@@ -26,14 +26,15 @@ function displayGraph(graphData){
             entry.sum += signal.dBm;
             entry.count++;
 
-            signalInfo = "cId: " + signal.cId
             if (signal.operator)
-                signalInfo += "\n operadora: " + signal.operator;
+                signalInfo.set(time,"cId: " + signal.cId + "\n operadora: " + signal.operator);
+            else
+                signalInfo.set(time,"cId: " + signal.cId);
         });
     
         const x = Array.from(timeline);
         const y = x.map(time => meanDBm.get(time).sum / meanDBm.get(time).count);
-        const info = x.map(time => info.get(time));
+        const info = x.map(time => signalInfo.get(time));
     
         return {
             x,
