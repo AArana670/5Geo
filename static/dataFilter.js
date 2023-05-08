@@ -47,7 +47,7 @@ function applyFilter(){
 }
 
 function withinRange(signal, lat, lng, zoom){
-    round = zoom - 5;
+    round = zoom - 10;
     if (round < 0)
         round = 0;
 
