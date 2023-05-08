@@ -27,9 +27,9 @@ function displayGraph(graphData){
             entry.count++;
 
             if (signal.operator)
-                signalInfo.set(time,"cId: " + signal.cId + "\n operadora: " + signal.operator);
+                signalInfo.set(signal.moment, "cId: " + signal.cId + "\n operadora: " + signal.operator);
             else
-                signalInfo.set(time,"cId: " + signal.cId);
+                signalInfo.set(signal.moment, "cId: " + signal.cId);
         });
     
         const x = Array.from(timeline);
