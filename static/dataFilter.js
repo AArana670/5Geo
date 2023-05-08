@@ -47,7 +47,7 @@ function applyFilter(){
 }
 
 function coordFilter(data, lat, lng, zoom){
-    round = zoom - 10;
+    round = zoom - 5;
     if (round < 0)
         round = 0;
 
