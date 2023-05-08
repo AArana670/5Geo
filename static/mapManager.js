@@ -45,11 +45,13 @@ function numberToColorHsl(dBm) {  //https://stackoverflow.com/a/17527156
 
 
 map.on('click', function(e){
-    var coord = e.latlng;
-    var lat = coord.lat;
-    var lng = coord.lng;
+    var zoom = map.getZoom();
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
 
-    createGraph(lat,lng);
+    console.log(zoom + ": " + lat + " | " + lng)
+    setGraphData(coordFilter(mapData, lat, lng, zoom));
+    displayGraph(graphData, "Datos de señales en " + lat + ", " + lng);
     });
 
 

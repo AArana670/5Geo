@@ -41,8 +41,19 @@ function applyFilter(){
         displayMap(mapData)
         if (token){
             setGraphData(data["signals"]);
-            displayGraph(graphData);
+            displayGraph(graphData, "Datos de señales de " + token);
         }
     });
 }
 
+function coordFilter(data, lat, lng, zoom){
+
+    objLat = lat.toFixed(zoom);
+    objLong = lng.toFixed(zoom);
+
+    newData = data.filter(signal => (signal.ubiLat == objLat && signal.ubiLong == objLong));
+    console.log(newData);
+
+    return newData;
+
+}

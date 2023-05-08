@@ -6,7 +6,7 @@ function groupBy(arr, property) {  //https://stackoverflow.com/a/14696535
     }, {});
   }
 
-function displayGraph(graphData){
+function displayGraph(graphData, title){
 
     //group the signals by frequency
     var freqDivision = groupBy(graphData, "freq");
@@ -38,7 +38,7 @@ function displayGraph(graphData){
     });
 
     var layout = {
-        //title: "Emisión EM en "+lat+", "+lng,
+        title,
         xaxis:{  //https://plotly.com/python/range-slider/
             rangeselector:{
                 buttons:[
@@ -62,8 +62,6 @@ function displayGraph(graphData){
             },
             type:"date"
         }
-        /*plot_bgcolor:"#303030",
-        paper_bgcolor:"#FFF3"*/
     };
       
   
