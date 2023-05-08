@@ -51,7 +51,7 @@ function coordFilter(data, lat, lng, zoom){
     objLat = lat.toFixed(zoom);
     objLong = lng.toFixed(zoom);
 
-    newData = data.filter(signal => (signal.ubiLat == objLat && signal.ubiLong == objLong));
+    newData = data.filter(signal => (signal.ubiLat.toFixed(zoom) == objLat && signal.ubiLong.toFixed(zoom) == objLong));
     console.log(newData);
 
     return newData;
