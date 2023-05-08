@@ -9,7 +9,7 @@ var markerList = [];
 
 fetch("http://5geo.me/signal")
     .then((response) => response.json()).then(data => {
-        var mapData = data["signals"];
+        setMapData(data["signals"]);
         displayMap(mapData)});
 
 function displayMap(heatmapData){
