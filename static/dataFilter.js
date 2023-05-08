@@ -47,7 +47,8 @@ function applyFilter(){
 }
 
 function withinRange(signal, objLat, objLong, zoom){
-    var threshold = 0.25/(zoom^5);
+    //var threshold = 0.25/(zoom^5);
+    threshold = 0.0001;
 
     if (Math.abs(signal["ubiLat"] - objLat) > threshold)
         return false;
