@@ -51,13 +51,13 @@ function coordFilter(data, lat, lng, zoom){
     if (round < 0)
         round = 0;
 
-    objLat = lat.toFixed(zoom);
-    objLong = lng.toFixed(zoom);
+    objLat = lat.toFixed(round);
+    objLong = lng.toFixed(round);
 
     console.log(zoom + ": " + objLat + " | " + objLong);
 
     console.log(data);
-    newData = data.filter(signal => signal["ubiLat"].toFixed(round) == objLat || signal["ubiLong"].toFixed(round) == objLong);
+    newData = data.filter(signal => signal["ubiLat"].toFixed(round) == objLat && signal["ubiLong"].toFixed(round) == objLong);
     console.log(newData);
 
     return newData;
