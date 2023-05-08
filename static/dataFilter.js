@@ -46,7 +46,7 @@ function applyFilter(){
     });
 }
 
-function coordFilter(data, lat, lng, zoom){
+function withinRange(signal, lat, lng, zoom){
     round = zoom - 5;
     if (round < 0)
         round = 0;
@@ -54,10 +54,19 @@ function coordFilter(data, lat, lng, zoom){
     objLat = lat.toFixed(round);
     objLong = lng.toFixed(round);
 
-    console.log(zoom + ": " + objLat + " | " + objLong);
+    if (Math.abs(signal["ubiLat"] - objLat) > 10^(-round))
+        return false;
 
-    console.log(data);
-    newData = data.filter(signal => signal["ubiLat"].toFixed(round) == objLat && signal["ubiLong"].toFixed(round) == objLong);
+    if (Math.abs(signal["ubiLong"] - objLong) > 10^(-round))
+        return false;
+    
+    return true;
+}
+
+function coordFilter(data, lat, lng, zoom){
+
+    console.log(zoom + ": " + lat + " | " + long);
+    newData = data.filter(signal => withinRange(signal, lat, lng, zoom));
     console.log(newData);
 
     return newData;
