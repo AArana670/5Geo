@@ -47,14 +47,12 @@ function applyFilter(){
 }
 
 function withinRange(signal, objLat, objLong, zoom){
-    round = zoom - 10;
-    if (round < 0)
-        round = 0;
+    threshold = 1/(3^(zoom-19)(zoom^4))
 
-    if (Math.abs(signal["ubiLat"] - objLat) > 0.01/(zoom^4))
+    if (Math.abs(signal["ubiLat"] - objLat) > threshold)
         return false;
 
-    if (Math.abs(signal["ubiLong"] - objLong) > 0.01/(zoom^4))
+    if (Math.abs(signal["ubiLong"] - objLong) > threshold)
         return false;
     
     return true;
