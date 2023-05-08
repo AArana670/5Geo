@@ -46,13 +46,10 @@ function applyFilter(){
     });
 }
 
-function withinRange(signal, lat, lng, zoom){
+function withinRange(signal, objLat, objLong, zoom){
     round = zoom - 10;
     if (round < 0)
         round = 0;
-
-    objLat = lat.toFixed(round);
-    objLong = lng.toFixed(round);
 
     if (Math.abs(signal["ubiLat"] - objLat) > 10^(-round))
         return false;
