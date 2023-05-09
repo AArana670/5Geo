@@ -26,7 +26,7 @@ def insert(body):  #signalList has already been verified
         if "cId" in signal:
             newSignal["cId"] = signal["cId"]
         
-        if "provider" in signal:
+        if "operator" in signal:
             newSignal["operator"] = signal["operator"]
         
         if body["token"]!="":
