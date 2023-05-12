@@ -77,3 +77,5 @@ function displayGraph(graphData){
   
   Plotly.newPlot('timeEvo', traceList, layout);
 }
+
+document.getElementById('timeEvo').on('plotly_relayout', refreshStatistics);
