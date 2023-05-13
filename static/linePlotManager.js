@@ -80,4 +80,3 @@ function displayGraph(graphData){
   Plotly.newPlot(plotDiv, traceList, layout);
   plotDiv.on('plotly_relayout', e => refreshStatistics(e));
 }
-
