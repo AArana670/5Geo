@@ -1,3 +1,5 @@
+const plotDiv = document.getElementById('timeEvo');
+
 function groupBy(arr, property) {  //https://stackoverflow.com/a/14696535
     return arr.reduce(function(memo, x) {
       if (!memo[x[property]]) { memo[x[property]] = []; }
@@ -75,7 +77,7 @@ function displayGraph(graphData){
     };
       
   
-  Plotly.newPlot('timeEvo', traceList, layout);
+  Plotly.newPlot(plotDiv, traceList, layout);
 }
 
-document.getElementById('timeEvo').on('plotly_relayout', refreshStatistics);
+plotDiv.on('plotly_relayout', refreshStatistics);
