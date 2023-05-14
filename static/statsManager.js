@@ -19,21 +19,17 @@ function setRange(e){
 }
 
 function refreshStatistics(){
-    var shownTraces = [];
+    /*var shownTraces = [];
     for (let i = 0; i < plotDiv.data.length; i++) {
         if (plotDiv.data[i].visible) {
             shownTraces.push(plotDiv.data[i]);
         }
-    }
+    }*/
 
-    if (xMin)  //xMax also exists then
-        filteredData = shownTraces.filter(trace => trace.x < xMax && trace.x > xMin);
-    else
-        filteredData = shownTraces;
-    setZoomedData(filteredData);
-    console.log(filteredData);
+    shownData = graphData.filter(signal => signal["moment"] < xMax && signal["moment"] > xMin);
+    setZoomedData(shownData);
     
-    dBmList = filteredData.map(trace => trace.y);
+    dBmList = shownData.map(signal => signal["dBm"]);
 
     min = calcQuartile(dBmList, 0);
     max = calcQuartile(dBmList, 100);
