@@ -37,7 +37,7 @@ function downloadMap(){  //https://stackoverflow.com/a/14966131
 }
 
 function downloadGraph(){  //https://stackoverflow.com/a/14966131
-    downloadable = convertToCSV(graphData);
+    downloadable = convertToCSV(zoomedData);
     
     //create a link with the .csv and click it programmatically
     var hiddenElement = document.createElement('a');
