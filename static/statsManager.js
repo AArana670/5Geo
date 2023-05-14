@@ -1,4 +1,7 @@
-function calcQuartile(arr, q) {
+xMin;
+xMax;
+
+function calcQuartile(arr, q) {  //https://snippets.bentasker.co.uk/page-1907020841-Calculating-Mean,-Median,-Mode,-Range-and-Percentiles-with-Javascript-Javascript.html
     var a = arr.slice();
     q = q / 100;
     data = a.sort((a, b) => a - b);
@@ -13,14 +16,23 @@ function calcQuartile(arr, q) {
     }
 }
 
-function refreshStatistics(e){
-    var xMin = e['xaxis.range[0]'];
-    var xMax = e['xaxis.range[1]'];
+function setRange(e){
+    xMin = e['xaxis.range[0]'];
+    xMax = e['xaxis.range[1]'];
+}
 
-    shownData = graphData.filter(signal => signal["moment"] < xMax && signal["moment"] > xMin);
-    setZoomedData(shownData);
+function refreshStatistics(){
+    var shownTraces = [];
+    for (let i = 0; i < plotDiv.data.length; i++) {
+        if (plotDiv.data[i].visible) {
+            shownTraces.push(plotDiv.data[i]);
+        }
+    }
+
+    filteredData = shownTraces.filter(trace => trace.x < xMax && trace.x > xMin);
+    setZoomedData(filteredData);
     
-    dBmList = shownData.map(signal => signal["dBm"]);
+    dBmList = filteredData.map(trace => trace.y);
 
     min = calcQuartile(dBmList, 0);
     max = calcQuartile(dBmList, 100);
