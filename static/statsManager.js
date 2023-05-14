@@ -37,5 +37,9 @@ function refreshStatistics(){
     p10 = calcQuartile(dBmList, 10);
     p90 = calcQuartile(dBmList, 90);
 
-    console.log("min: " + min + ", p10: " + p10 + ", median: " + median + ", p90: " + p90 + ", max: " + max);
+    document.getElementById("min").innerHTML="Mínimo: " + min;
+    document.getElementById("p10").innerHTML="Percentil 10: " + p10;
+    document.getElementById("median").innerHTML="Mediana: " + median;
+    document.getElementById("p90").innerHTML="Percentil 90: " + p90;
+    document.getElementById("max").innerHTML="Máximo: " + max;
 }
