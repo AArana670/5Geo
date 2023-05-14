@@ -1,6 +1,3 @@
-xMin;
-xMax;
-
 function calcQuartile(arr, q) {  //https://snippets.bentasker.co.uk/page-1907020841-Calculating-Mean,-Median,-Mode,-Range-and-Percentiles-with-Javascript-Javascript.html
     var a = arr.slice();
     q = q / 100;
@@ -29,8 +26,12 @@ function refreshStatistics(){
         }
     }
 
-    filteredData = shownTraces.filter(trace => trace.x < xMax && trace.x > xMin);
+    if (xMin)  //xMax also exists then
+        filteredData = shownTraces.filter(trace => trace.x < xMax && trace.x > xMin);
+    else
+        filteredData = shownTraces;
     setZoomedData(filteredData);
+    console.log(filteredData);
     
     dBmList = filteredData.map(trace => trace.y);
 
