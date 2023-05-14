@@ -1,5 +1,8 @@
 function refreshStatistics(e){
     var xMin = e['xaxis.range[0]'];
     var xMax = e['xaxis.range[1]'];
-    console.log("Graph statistics recalculated, from " + xMin + " to " + xMax);
+
+    shownData = graphData.filter(signal => signal["moment"] < xMax && signal["moment"] > xMin);
+    setZoomedData(shownData);
+    console.log(zoomedData);
 }

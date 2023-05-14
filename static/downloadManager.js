@@ -21,6 +21,10 @@ function setGraphData(data){
     graphData = data;
 }
 
+function setZoomedData(data){
+    zoomedData = data;
+}
+
 function downloadMap(){  //https://stackoverflow.com/a/14966131
     downloadable = convertToCSV(mapData);
     

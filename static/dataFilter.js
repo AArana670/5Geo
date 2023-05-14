@@ -41,6 +41,7 @@ function applyFilter(){
         displayMap(mapData)
         if (token){
             setGraphData(data["signals"]);
+            setZoomedData(data["signals"]);  //When a new graph is displayed the zoom resets
             displayGraph(graphData, "Datos de señales de " + token);
         }
     });
