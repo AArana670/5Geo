@@ -100,6 +100,13 @@ body.dark-theme .filter_title{
   text-align: left;
 }
 
+.stat{
+  color:#303030;
+}
+
+body.dark-theme .stat{
+  color: #C6C6C6;
+}
 
 
 /*Dual slider range: https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816*/
