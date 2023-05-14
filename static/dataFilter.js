@@ -29,11 +29,9 @@ function applyFilter(){
     if (gsm)
         uri.searchParams.append("type", "GSM");
     
-    if (minFreq.value != minFreq.min)
-        uri.searchParams.append("minFreq", minFreq.value);
+    uri.searchParams.append("minFreq", minFreq.value);
 
-    if (maxFreq.value != maxFreq.max)
-        uri.searchParams.append("maxFreq", maxFreq.value);
+    uri.searchParams.append("maxFreq", maxFreq.value);
 
     fetch(uri.toString())
     .then((response) => response.json()).then(data => {
