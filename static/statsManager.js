@@ -22,8 +22,8 @@ function refreshStatistics(e){
     
     dBmList = shownData.map(signal => signal["dBm"]);
 
-    min = Math.min(dBmList);
-    max = Math.max(dBmList);
+    min = calcQuartile(dBmList, 0);
+    max = calcQuartile(dBmList, 100);
     median = calcQuartile(dBmList, 50);
     p10 = calcQuartile(dBmList, 10);
     p90 = calcQuartile(dBmList, 90);
