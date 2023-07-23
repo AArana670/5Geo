@@ -29,7 +29,7 @@ function displayGraph(graphData){
             entry.count++;
 
             if (signal.operator)
-                signalInfo.set(signal.moment, "cId: " + signal.cId + "\n operadora: " + signal.operator);
+                signalInfo.set(signal.moment, "cId: " + signal.cId + "\n operador: " + signal.operator);
             else
                 signalInfo.set(signal.moment, "cId: " + signal.cId);
         });
